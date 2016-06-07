@@ -148,6 +148,8 @@ Look at https://tinyurl.com/CortanaInteraction for more info on creating useful 
 Example of Implementation:
 `Search [for] {searchResult} \/ BeforeOrAfterPhrase #!# Find {searchResult} \/ BeforeOrAfterPhrase #!# Look for {searchResult} \/ BeforeOrAfterPhrase #!# Look up {searchResult} \/ BeforeOrAfterPhrase #!# [Query] {searchResult} \/ BeforePhrase`
 
+**Maximum of 10 ListenForGroups**
+
 **PhraseLists:**
 Add custom PhraseLists, these work in combination with ListenForGroups to help enhance vocabulary and natural language. You can use these to allow very similarly expressed words to be in the same command, such as "Play the Trailer", and "Show the Trailer". 
 
