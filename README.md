@@ -158,3 +158,7 @@ Example of implementation:
 
 **Here is an example of a ResX file ready for Translation:**
 ![alt Example](http://puu.sh/pjRVb/f7acae2fac.PNG)
+
+**Notes**  
+If you encounter any issues or have a suggestion: don't hesitate to open a ticket, you will be helping me too.  
+Should you wish to do so, you can contact me at `williamabradley@outlook.com`.
