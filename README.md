@@ -16,44 +16,44 @@ Using this Library, the VCD file will be built at Runtime everytime, you could h
 List<string> Places = new List<string> { "Auckland", "Wellington", "Christchurch" };
 var VCD = new VoiceCommandDefinition()
 {
-CommandSets =
-{
-    new CommandSet("en")
-    {
-        Example = "Book trips to Destinations",
-        AppName = "TravelPlan",
-        Name = "TravelPlanCommands(English)",
-        Commands =
-        {
-            new ForegroundActivatedVoiceCommand("Command")
-            {
-                Example = "Book a Trip to Wellington",
-                Feedback = "Booking Trip",
-                ListenStatements =
-                {
-                    new ListenStatement("Book [a] Trip [to] {Places}", RequireAppName.BeforeOrAfterPhrase),
-                    new ListenStatement("[I] [would] [like] [to] Book [a] [my] [Holiday] [Trip] to {searchTerm}",
-                    RequireAppName.BeforeOrAfterPhrase)
-                },
-                AppTarget = "BOOKTRIP"
-            }
-        },
-        PhraseLists =
-        {
-            new PhraseList("Places", Places)
-        },
-        PhraseTopics =
-        {
-            new PhraseTopic("searchTerm", PhraseTopicScenario.Search)
-            {
-                Subjects =
-                {
-                    PhraseTopicSubject.CityORState
-                }
-            }
-        }
-    }
-}
+	CommandSets =
+	{
+		new CommandSet("en")
+		{
+			Example = "Book trips to Destinations",
+			AppName = "TravelPlan",
+			Name = "TravelPlanCommands(English)",
+			Commands =
+			{
+				new ForegroundActivatedVoiceCommand("Command")
+				{
+					Example = "Book a Trip to Wellington",
+					Feedback = "Booking Trip",
+					ListenStatements =
+					{
+						new ListenStatement("Book [a] Trip [to] {Places}", RequireAppName.BeforeOrAfterPhrase),
+						new ListenStatement("[I] [would] [like] [to] Book [a] [my] [Holiday] [Trip] to {searchTerm}",
+						RequireAppName.BeforeOrAfterPhrase)
+					},
+					AppTarget = "BOOKTRIP"
+				}
+			},
+			PhraseLists =
+			{
+				new PhraseList("Places", Places)
+			},
+			PhraseTopics =
+			{
+				new PhraseTopic("searchTerm", PhraseTopicScenario.Search)
+				{
+					Subjects =
+					{
+						PhraseTopicSubject.CityORState
+					}
+				}
+			}
+		}
+	}
 };
 await VCD.CreateAndInstall();
 ```
