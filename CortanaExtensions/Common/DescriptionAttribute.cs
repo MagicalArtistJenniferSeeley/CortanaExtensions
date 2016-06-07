@@ -1,4 +1,8 @@
-﻿namespace System.ComponentModel
+﻿using System;
+/// <summary>
+/// From StackOverflow http://stackoverflow.com/a/18606291/5001796 User: Xyroid
+/// </summary>
+namespace CortanaExtensions.Common
 {
     [AttributeUsage(AttributeTargets.All)]
     public class DescriptionAttribute : Attribute

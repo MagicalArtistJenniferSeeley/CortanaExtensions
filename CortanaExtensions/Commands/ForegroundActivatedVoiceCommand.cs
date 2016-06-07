@@ -1,23 +1,38 @@
-﻿using CortanaExtensions.Common;
-using CortanaExtensions.Interfaces;
+﻿using CortanaExtensions.Models;
 using System.Collections.Generic;
 using System.Xml.Linq;
 
 namespace CortanaExtensions.Commands
 {
-    public class ForegroundActivatedVoiceCommand : Structure, IVoiceCommand
+	/// <summary>
+	/// Voice command that activates the App in foreground when requested. AppTarget is an optional string to provide parameter to you app on Activation.
+	/// </summary>
+	public class ForegroundActivatedVoiceCommand : VoiceCommandBase
     {
-        public ForegroundActivatedVoiceCommand(string Name, string Example, IList<ListenStatement> ListenStatements, string Feedback, string AppTarget)
+        /// <summary>
+        /// Voice command that activates the App in foreground when requested.
+        /// </summary>
+        /// <param name="Name">Name of the Command (REQUIRED)</param>
+        public ForegroundActivatedVoiceCommand(string Name) { BuildCommand(); this.Name = Name; ServiceTarget = new XElement(Schema + "Navigate"); }
+        /// <summary>
+        /// Voice command that activates the App in foreground when requested.
+        /// </summary>
+        /// <param name="Name">Name of the Command (REQUIRED)</param>
+        /// <param name="Example">Example of what the command does, shown in Cortana (REQUIRED)</param>
+        /// <param name="ListenStatements">What Cortana will listen for to Activate the Command</param>
+        /// <param name="Feedback">What Cortana will return when Command called (REQUIRED)</param>
+        /// <param name="AppTarget">An optional string to provide parameter to you app on Activation.</param>
+        public ForegroundActivatedVoiceCommand(string Name, string Example, IEnumerable<ListenStatement> ListenStatements, string Feedback, string AppTarget = "")
         {
-            Element = this.BuildCommand(Name, Example, ListenStatements, Feedback);
-            var serviceTarget = new XElement(Schema + "VoiceCommandService", new XAttribute("Target", AppTarget));
-            Element.Add(serviceTarget);
+            BuildCommand(Name, Example, ListenStatements, Feedback);
+            if (string.IsNullOrWhiteSpace(AppTarget)) ServiceTarget = new XElement(Schema + "Navigate");
+            else this.AppTarget = AppTarget;
         }
-        private XElement Element { get; set; }
-        public List<ListenStatement> ListenStatements { get; set; }
 
-        XElement IVoiceCommand.BuildCommand(string Name, string Example, IList<ListenStatement> ListenStatements, string Feedback) { return this.BuildCommand(Name, Example, ListenStatements, Feedback); }
-        public void AddListenStatement(ListenStatement ListenStatement) { Element.Add(this.AddListenStatementInternal(ListenStatement)); }
-        public XElement getElement() { return Element; }
+        internal string _AppTarget;
+        /// <summary>
+        /// An optional string to provide parameter to you app on Activation.
+        /// </summary>
+        public string AppTarget { get { return _AppTarget; } set { ServiceTarget = new XElement(Schema + "Navigate", new XAttribute("Target", value)); _AppTarget = value; } }
     }
 }

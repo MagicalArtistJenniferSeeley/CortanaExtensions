@@ -107,7 +107,8 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandSet.cs" />
+    <Compile Include="Common\ValueInterpreter.cs" />
+    <Compile Include="Models\CommandSet.cs" />
     <Compile Include="Commands\BackgroundActivatedVoiceCommand.cs" />
     <Compile Include="Commands\ForegroundActivatedVoiceCommand.cs" />
     <Compile Include="Common\DescriptionAttribute.cs" />
@@ -116,11 +117,10 @@
     <Compile Include="Enums\PhraseTopicScenario.cs" />
     <Compile Include="Enums\PhraseTopicSubject.cs" />
     <Compile Include="Enums\RequireAppName.cs" />
-    <Compile Include="Exceptions\ListenStatementOverflowException.cs" />
-    <Compile Include="Exceptions\PhraseListIemOverflowException.cs" />
+    <Compile Include="Exceptions\FieldOverflowException.cs" />
     <Compile Include="Interfaces\IElement.cs" />
-    <Compile Include="Interfaces\IVoiceCommand.cs" />
-    <Compile Include="ListenStatement.cs" />
+    <Compile Include="Commands\VoiceCommandBase.cs" />
+    <Compile Include="Models\ListenStatement.cs" />
     <Compile Include="PhraseGroups\PhraseList.cs" />
     <Compile Include="PhraseGroups\PhraseTopic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
