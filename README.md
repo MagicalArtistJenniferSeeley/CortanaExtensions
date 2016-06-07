@@ -125,6 +125,9 @@ public static CommandSet AddLanguageSet(string langCode)
 	}
 }
 ```
+
+This code produces this resulting [XML](http://puu.sh/pjTyT/d026cf7090.PNG).
+
 Custom Markup Format
 =======
 
