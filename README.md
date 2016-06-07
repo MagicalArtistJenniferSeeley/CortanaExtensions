@@ -131,7 +131,7 @@ This code produces this resulting [XML](http://puu.sh/pjTyT/d026cf7090.PNG), Str
 Custom Markup Format
 =======
 
-This Code uses a Custom Markup format to Deserialise a String for use in ListenFor and PhraseList cases, these can be very useful if you want the translator to create different ways of Saying a command that feels natural for that language. To help the translators, either copy and modify the below Descriptions, or link to this page in your XLF or ResX comments.
+This Code uses a Custom Markup format to Deserialise a String for use in ListenFor and PhraseList cases, these can be very useful if you want the translator to create different ways of Saying a command that feels natural for that language. To help the translators, either copy and modify the below Descriptions, or link to this section using "tinyurl.com/CortanaCustomMarkup" in your XLF or ResX comments.
 
 **ListenForGroups (Example shown for Search terms):**
 Create multiple different suggestions for what Cortana can Listen for to register a Command. 
@@ -141,10 +141,20 @@ The search term spoken is registered by adding {searchResult} to a part of the s
 
 Separated by " \/ " is the position of the app's name to be spoken by the user. The possible values are "BeforePhrase", "AfterPhrase", "BeforeOrAfterPhrase" or "ExplicitlySpecified". To use ExplicitlySpecified, you must insert "{builtin:AppName}" into your string. To use Expilictly specified or AfterPhrase or BeforeOrAfterPhrase, you must have at least 2 words inluding items in {}, but not including words that are surrounded in square brackets. 
 
-To separate suggestions use " #!# ". Optional words with Square Brackets cannot be nested (e.g. Square brackets over a phrase list). Look at https://tinyurl.com/CortanaInteraction for more info on creating useful Commands.
+To separate suggestions use " #!# ". Optional words with Square Brackets cannot be nested (e.g. Square brackets over a phrase list). 
+
+Look at https://tinyurl.com/CortanaInteraction for more info on creating useful variations of commands using ListenForGroups.
+
+Example of Implementation:
+`Search [for] {searchResult} \/ BeforeOrAfterPhrase #!# Find {searchResult} \/ BeforeOrAfterPhrase #!# Look for {searchResult} \/ BeforeOrAfterPhrase #!# Look up {searchResult} \/ BeforeOrAfterPhrase #!# [Query] {searchResult} \/ BeforePhrase`
 
 **PhraseLists:**
-Add custom PhraseLists, these work in combination with ListenForGroups to help enhance vocabulary and natural language. You can use these to allow very similarly expressed words to be in the same command, such as "Play the Trailer", and "Show the Trailer". (Example of implementation: PlayVariations \/ Play,Show,Display,Show me,Find #!# Series \/ Game of Thrones,Dexter,Arrested Development) Use " \/ " to Separate the Name of the phrase list from the the values inside. Comma delimit different Phrases without spaces, (spaces allowed between words). Use " #!# " to separate different Phrase lists. To use these phrases in a ListenForGroup use {} curly braces, e.g. {PlayVariations}.
+Add custom PhraseLists, these work in combination with ListenForGroups to help enhance vocabulary and natural language. You can use these to allow very similarly expressed words to be in the same command, such as "Play the Trailer", and "Show the Trailer". 
+
+Use " \/ " to Separate the Name of the phrase list from the the values inside. Different Phrases are separated using "\". Use " #!# " to separate different Phrase lists. To use these phrases in a ListenForGroup use {} curly braces, e.g. {PlayVariations}.
+
+Example of implementation: 
+`PlayVariations \/ Play\Show\Display\Show me\Find #!# Series \/ Game of Thrones\Dexter\Arrested Development`
 
 **Here is an example of a ResX file ready for Translation:**
 ![alt Example](http://puu.sh/pjRVb/f7acae2fac.PNG)
