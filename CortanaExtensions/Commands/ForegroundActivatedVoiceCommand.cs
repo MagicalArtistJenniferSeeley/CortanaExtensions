@@ -4,16 +4,17 @@ using System.Xml.Linq;
 
 namespace CortanaExtensions.Commands
 {
-	/// <summary>
-	/// Voice command that activates the App in foreground when requested. AppTarget is an optional string to provide parameter to you app on Activation.
-	/// </summary>
-	public class ForegroundActivatedVoiceCommand : VoiceCommandBase
+    /// <summary>
+    /// Voice command that activates the App in foreground when requested. AppTarget is an optional string to provide parameter to you app on Activation.
+    /// </summary>
+    public class ForegroundActivatedVoiceCommand : VoiceCommandBase
     {
         /// <summary>
         /// Voice command that activates the App in foreground when requested.
         /// </summary>
         /// <param name="Name">Name of the Command (REQUIRED)</param>
         public ForegroundActivatedVoiceCommand(string Name) { BuildCommand(); this.Name = Name; ServiceTarget = new XElement(Schema + "Navigate"); }
+
         /// <summary>
         /// Voice command that activates the App in foreground when requested.
         /// </summary>
@@ -29,10 +30,11 @@ namespace CortanaExtensions.Commands
             else this.AppTarget = AppTarget;
         }
 
-        internal string _AppTarget;
         /// <summary>
         /// An optional string to provide parameter to you app on Activation.
         /// </summary>
         public string AppTarget { get { return _AppTarget; } set { ServiceTarget = new XElement(Schema + "Navigate", new XAttribute("Target", value)); _AppTarget = value; } }
+
+        internal string _AppTarget;
     }
 }

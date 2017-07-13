@@ -10,6 +10,6 @@ namespace CortanaExtensions.Interfaces
         /// <summary>
         /// Fetches the Internal XML Element for processing
         /// </summary>
-        XElement getElement();
+        XElement GetElement();
     }
 }
